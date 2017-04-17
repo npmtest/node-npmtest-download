@@ -1,7 +1,5 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <title>Code coverage report for node-npmtest-download/download/index.js</title>
+<html lang="en"><head>
+    <title>Code coverage report for node-npmtest-download/node_modules/download/index.js</title>
     <meta charset="utf-8">
     <style>
         body, html {
@@ -194,7 +192,7 @@
     <h1 style="font-weight: bold;">
         <a href="https://github.com/npmtest/node-npmtest-download">npmtest-download (v0.0.1)</a>
     </h1>
-    <h1>Code coverage report for <span class="entity">node-npmtest-download/download/index.js</span></h1>
+    <h1>Code coverage report for <span class="entity">node-npmtest-download/node_modules/download/index.js</span></h1>
     <h2>
         
         Statements: <span class="metric">34.21% <small>(13 / 38)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
@@ -210,11 +208,11 @@
         
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
-    <div class="path"><a href="../../index.html">All files</a> &#187; <a href="index.html">node-npmtest-download/download/</a> &#187; index.js</div>
+    <div class="path"><a href="../../../index.html">All files</a> » <a href="index.html">node-npmtest-download/node_modules/download/</a> » index.js</div>
 </div>
 <div class="body">
 <pre><table class="coverage">
-<tr><td class="line-count">1
+<tbody><tr><td class="line-count">1
 2
 3
 4
@@ -357,60 +355,61 @@ const pify = require('pify');
 const fsP = pify(fs);
 &nbsp;
 const createPromise = (uri, output, stream, opts) =&gt; {
-<span class="cstat-no" title="statement not covered" >	const response = opts.encoding === null ? getStream.buffer(stream) : getStream(stream, opts);</span>
+<span class="cstat-no" title="statement not covered">	const response = opts.encoding === null ? getStream.buffer(stream) : getStream(stream, opts);</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >	return response.then(data =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >		if (!output &amp;&amp; opts.extract) {</span>
-<span class="cstat-no" title="statement not covered" >			return decompress(data, opts);</span>
+<span class="cstat-no" title="statement not covered">	return response.then(data =&gt; {</span>
+<span class="cstat-no" title="statement not covered">		if (!output &amp;&amp; opts.extract) {</span>
+<span class="cstat-no" title="statement not covered">			return decompress(data, opts);</span>
 		}
 &nbsp;
-<span class="cstat-no" title="statement not covered" >		if (!output) {</span>
-<span class="cstat-no" title="statement not covered" >			return data;</span>
+<span class="cstat-no" title="statement not covered">		if (!output) {</span>
+<span class="cstat-no" title="statement not covered">			return data;</span>
 		}
 &nbsp;
-<span class="cstat-no" title="statement not covered" >		if (opts.extract) {</span>
-<span class="cstat-no" title="statement not covered" >			return decompress(data, path.dirname(output), opts);</span>
+<span class="cstat-no" title="statement not covered">		if (opts.extract) {</span>
+<span class="cstat-no" title="statement not covered">			return decompress(data, path.dirname(output), opts);</span>
 		}
 &nbsp;
-<span class="cstat-no" title="statement not covered" >		return pify(mkdirp)(path.dirname(output))</span>
-			.then(() =&gt; <span class="cstat-no" title="statement not covered" >fsP.writeFile(output, data))</span>
-			.then(() =&gt; <span class="cstat-no" title="statement not covered" >data)</span>;
+<span class="cstat-no" title="statement not covered">		return pify(mkdirp)(path.dirname(output))</span>
+			.then(() =&gt; <span class="cstat-no" title="statement not covered">fsP.writeFile(output, data))</span>
+			.then(() =&gt; <span class="cstat-no" title="statement not covered">data)</span>;
 	});
 };
 &nbsp;
 module.exports = (uri, output, opts) =&gt; {
-<span class="cstat-no" title="statement not covered" >	if (typeof output === 'object') {</span>
-<span class="cstat-no" title="statement not covered" >		opts = output;</span>
-<span class="cstat-no" title="statement not covered" >		output = null;</span>
+<span class="cstat-no" title="statement not covered">	if (typeof output === 'object') {</span>
+<span class="cstat-no" title="statement not covered">		opts = output;</span>
+<span class="cstat-no" title="statement not covered">		output = null;</span>
 	}
 &nbsp;
-<span class="cstat-no" title="statement not covered" >	opts = Object.assign({</span>
+<span class="cstat-no" title="statement not covered">	opts = Object.assign({</span>
 		encoding: null,
 		rejectUnauthorized: process.env.npm_config_strict_ssl !== 'false'
 	}, opts);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >	let protocol = url.parse(uri).protocol;</span>
+<span class="cstat-no" title="statement not covered">	let protocol = url.parse(uri).protocol;</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >	if (protocol) {</span>
-<span class="cstat-no" title="statement not covered" >		protocol = protocol.slice(0, -1);</span>
+<span class="cstat-no" title="statement not covered">	if (protocol) {</span>
+<span class="cstat-no" title="statement not covered">		protocol = protocol.slice(0, -1);</span>
 	}
 &nbsp;
-<span class="cstat-no" title="statement not covered" >	const agent = caw(opts.proxy, {protocol});</span>
-<span class="cstat-no" title="statement not covered" >	const stream = got.stream(uri, Object.assign(opts, {agent}));</span>
-<span class="cstat-no" title="statement not covered" >	const dest = output ? path.join(output, filenamify(path.basename(uri))) : null;</span>
-<span class="cstat-no" title="statement not covered" >	const promise = createPromise(uri, dest, stream, opts);</span>
+<span class="cstat-no" title="statement not covered">	const agent = caw(opts.proxy, {protocol});</span>
+<span class="cstat-no" title="statement not covered">	const stream = got.stream(uri, Object.assign(opts, {agent}));</span>
+<span class="cstat-no" title="statement not covered">	const dest = output ? path.join(output, filenamify(path.basename(uri))) : null;</span>
+<span class="cstat-no" title="statement not covered">	const promise = createPromise(uri, dest, stream, opts);</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >	stream.then = promise.then.bind(promise);</span>
-<span class="cstat-no" title="statement not covered" >	stream.catch = promise.catch.bind(promise);</span>
+<span class="cstat-no" title="statement not covered">	stream.then = promise.then.bind(promise);</span>
+<span class="cstat-no" title="statement not covered">	stream.catch = promise.catch.bind(promise);</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >	return stream;</span>
+<span class="cstat-no" title="statement not covered">	return stream;</span>
 };
 &nbsp;
 &nbsp;</pre></td></tr>
-</table></pre>
+</tbody></table></pre>
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Tue Apr 11 2017 09:12:15 GMT+0000 (UTC)</div>
+    <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Mon Apr 17 2017 11:10:37 GMT+0000 (UTC)</div>
 </div>
-</body>
-</html>
+
+
+</body></html>
